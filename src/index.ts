@@ -21,7 +21,7 @@ interface UserData {
   energy: number;
   score: number;
   last: number;
-  readonly socket: Socket;
+  socket: Socket;
   energyCalculator?: NodeJS.Timeout;
   workSubmitter?: NodeJS.Timeout;
 }
@@ -127,7 +127,7 @@ socketIO.on('connection', (socket: Socket) => {
 
 function submitWork(userData: UserData) {
   const nowTime = Math.trunc(Date.now() / 1000);
-  if (userData.last !== 0) {
+  if (userData?.last) {
     updateClient({
       id: userData.id,
       click: userData.score,
