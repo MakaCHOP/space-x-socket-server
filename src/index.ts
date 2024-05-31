@@ -137,7 +137,7 @@ function submitWork(userData: UserData) {
     }).then(() => {
       userData.score = 0;
     });
-  } else {
+  } else if (userData?.id) {
     updateClient({
       id: userData.id,
       click: userData.score,
